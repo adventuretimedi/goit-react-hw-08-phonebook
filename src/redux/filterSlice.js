@@ -9,6 +9,5 @@ const filterSlice = createSlice({
     },
   },
 });
-// тут теж треба щось змінити
 export const { setFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;

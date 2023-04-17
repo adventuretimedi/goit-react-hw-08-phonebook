@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://6436a5898205915d34f91597.mockapi.io/contacts';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     try {
-      const response = await axios.get('/contacts');
+      const response = await axios.get('contacts');
       if (response.data.length === 0) {
-        console.log('smth wrong');
         throw new Error('there are no comntacts, your cheems');
       }
       return response.data;
@@ -40,7 +40,7 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, thunkAPI) => {
     try {
-      const response = axios.delete(`/contacts/${id}`);
+      const response = axios.delete(`contacts/${id}`);
       return (await response).data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

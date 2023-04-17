@@ -2,6 +2,8 @@ import s from './ContactList.module.css';
 import { selectContacts, selectFilter } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/operations';
+import { IconButton, List, ListItem, ListItemText } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactsList = () => {
   const contacts = useSelector(selectContacts);
@@ -23,24 +25,26 @@ const ContactsList = () => {
   const handleDelete = contact => dispatch(deleteContact(contact.id));
 
   return (
-    <div>
-      <ul>
-        {visibleContacts.map(contact => (
-          <li className={s.contactsListItem} key={contact.id}>
-            {contact.name}: {contact.number}
-            <button
-              type="button"
-              className={s.contactsBtn}
+    <List className={s.list}>
+      {visibleContacts.map(contact => (
+        <ListItem
+          key={contact.id}
+          secondaryAction={
+            <IconButton
+              edge="end"
+              aria-label="delete"
               onClick={() => {
                 handleDelete(contact);
               }}
             >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+              <DeleteIcon />
+            </IconButton>
+          }
+        >
+          <ListItemText primary={contact.name} secondary={contact.number} />
+        </ListItem>
+      ))}
+    </List>
   );
 };
 

@@ -35,6 +35,7 @@ const contactsSlice = createSlice({
         action => action.type.endsWith('/pending'),
         state => {
           state.isLoading = true;
+          state.error = null;
         }
       )
       .addMatcher(
