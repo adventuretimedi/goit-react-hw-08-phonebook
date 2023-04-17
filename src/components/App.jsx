@@ -24,13 +24,13 @@ const App = () => {
     <b>Refreshing user...</b>
   ) : (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path="/goit-react-hw-08-phonebook/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
         <Route
           path="register"
           element={
             <RestrictedRoute
-              redirectTo="/contacts"
+              redirectTo="/goit-react-hw-08-phonebook/contacts"
               component={<SignupPage />}
             />
           }
@@ -38,13 +38,19 @@ const App = () => {
         <Route
           path="login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute
+              redirectTo="/goit-react-hw-08-phonebook/contacts"
+              component={<LoginPage />}
+            />
           }
         />
         <Route
           path="contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            <PrivateRoute
+              redirectTo="/goit-react-hw-08-phonebook/login"
+              component={<ContactsPage />}
+            />
           }
         />
       </Route>

@@ -10,11 +10,11 @@ export const Header = () => {
   return (
     <header className={s.header}>
       <nav>
-        <NavLink to="/" className={s.link}>
+        <NavLink to="/goit-react-hw-08-phonebook/" className={s.link}>
           Home
         </NavLink>
         {isLoggedIn && (
-          <NavLink to="/contacts" className={s.link}>
+          <NavLink to="/goit-react-hw-08-phonebook/contacts" className={s.link}>
             Contacts
           </NavLink>
         )}

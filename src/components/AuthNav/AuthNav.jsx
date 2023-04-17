@@ -11,10 +11,10 @@ const AuthNav = () => {
       {!authorized && (
         <ul className={s.list}>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/goit-react-hw-08-phonebook/login">Login</Link>
           </li>
           <li>
-            <Link to="/register">Sign up</Link>
+            <Link to="/goit-react-hw-08-phonebook/register">Sign up</Link>
           </li>
         </ul>
       )}
