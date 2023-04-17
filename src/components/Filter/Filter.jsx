@@ -1,5 +1,4 @@
 import { setFilter } from 'redux/filterSlice';
-import s from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { TextField } from '@mui/material';
 
